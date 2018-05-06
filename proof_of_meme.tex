@@ -41,56 +41,53 @@
 \maketitle
 
 \begin{abstract}
-We formally define the finite automata of the constellation protocol as well as prove the security, consistency and liveness of  reputation based delegate selection.
+We formally define and verify the properties of the constellation protocol. We draw corollaries between formal verification and  sheaf cohomology.
 \end{abstract}
 \setcounter{secnumdepth}{0}
 \section{Introduction}
 As it is not possible to globally parameterize blocks by time, we follow the body of research defining blockchain state as a topological fiber bundle\footnote{}. Specifically, we formulate the constellation protocol as a probabilistic state machine carried by finite automata in a non-cooperative repeated interaction game. We go further proving security, consistency and liveness in a hierarchy of these state machines.
 
-\section{The Constellation Protocol}
-We formally define Constellation as the chain complex $C$ \footnote{chain complex link} which in our context is just an ordered set of unordered sets of disjoint Radials
-\begin{align*}
-C: \{O_0 \dots O_n \} \forall n \in \mathbb{N}
-\end{align*}
-where there is naturally an ordering given by $n$. This is isomorphic to the topological sorting of the set of all radials, where direction is given by "flow".
+\section{The Constellation Protocol Complex}
+We define the constellation complex as the protocol complex\footnote{} 
 
-\subsection{Flow}
-There is a notion of "flow" between radials. There are two directions to our flow. The rightward direction gossips blocks from a Radials in a lower Order "upward" into the highest order, which maintains the $globalState$. The leftward direction gossips a blocks from Radials in higher orders "downward". These blocks contain the result of a higher order consensus, which "validates the validators". The contents of this block is used by the generator function for delegate selection, and partitioning. 
-
-
-\subsection{Protocol Topology}
-We define the primitives of our DAG chain. We come to the conclusion that our DAG chain is a directed acyclic graph who's direction is given by simplex graph\footnote{wikipedia/Simplexgraph} $\kappa$ and topological ordering follows the tiered ordering of $R_K$. The simplex graph $\kappa(G)$ of an undirected graph G is itself a graph, with one node for each clique (a set of mutually adjacent vertices) in G. As all of our simplexes are independent, $\kappa_j \ | \ j \subseteq t-1$ for tier $t$ is formed as a disjoint subset of simplexes in $t-1$. We define $\kappa$ as a mapping from an undirected graph G to a new graph $\kappa(G)$ who's vertices are cliques and compositions of cliques of G
 \begin{equation} \label{eq1}
-\begin{split}
-\kappa: \sigma_j \rightarrow \sigma_k \ | \ j \subset t-1, \sigma_k \in R_{t-1}.simplices
-\end{split}
-\end{equation}
+\Omega^T_\Gamma: 0 \xleftrightarrow{\partial} \Omega^{T^*}_{\Gamma^*}(\epsilon) \xleftrightarrow{\partial}  \Omega^T_\Gamma (\epsilon(P_0)) \dots \Omega^T_\Gamma (\epsilon(P_\theta))
+\end{equation} \label{eq1} 
+with protocol topology\footnote{} 
 
-\subsection{Chain Fibering}
-Chain fibering is the formation of consensus blocks out of consensus blocks instead of transactions. This is varifiably sound up to isomorphism. We formulate notion of chain fibers by defining consensus in terms of a simplex graph $\kappa$. A chain fiber is given by 
 \begin{equation} \label{eq1}
-\begin{split}
-f \circ \kappa_j^{k}: \sigma_k  \rightarrow Block_k
-\end{split}
-\end{equation}
+T^{\Sigma}_P: 0 \leftarrow \Sigma_{*}P_\theta \xleftarrow{\partial} \Sigma P_{0} \xleftarrow{\partial} \dots \Sigma P_i \ | i \leq \theta \in \mathbb{Z}
+\end{equation} \label{eq1}
+formed under Hylomorphism
 
-where $\kappa_j^{k}$ is a simplex graph made up of chain fibers $Block_j$ in a preceding tier. The chain fibers from the preceding tier, $Block_j$, become the domain of the consensus function for tier k. We can say equivalently
 \begin{equation} \label{eq1}
-\begin{split}
-c_k: \{Block \dots Block\}_j \rightarrow Block_k
-\end{split}
-\end{equation}
+\Omega^T(\epsilon, P): P \times \Sigma \rightarrow \epsilon
+\end{equation} \label{eq1}
+and protocol manifold\footnote{} 
 
-We can formally define the mempool $mem$ of simplex $\sigma_k$ in tier $t$ as 
 \begin{equation} \label{eq1}
-\begin{split}
-mem_k \equiv \{Block \dots Block\}_j \ | \ j \subset R_{t-1}.simplices
-\end{split}
-\end{equation}
+\Gamma^\epsilon_{\Sigma} = \bigoplus_{0 \leq i \leq \theta} \Sigma_* \epsilon_i
+\end{equation} \label{eq1}
+defined by the sheaf of the co-chain complex
+
+\begin{equation} \label{eq1}
+\Gamma_\Sigma(P_*):  0 \xrightarrow{~} \Gamma_\Sigma(\epsilon) \xrightarrow{\partial} \Gamma_\Sigma(P_0) \xrightarrow{\partial} \dots
+\end{equation} \label{eq1}
+formed under the metamorphism
+
+\begin{equation} \label{eq1}
+P \leftarrow \Gamma_\Sigma \times \epsilon :\Omega_\Gamma(P, \epsilon)
+\end{equation} \label{eq1}
+
+where our protocol $P^\sigma_{*}(S):\{S_k, \partial_k\}$ is the singular homology of a simplicial chain complex, carried by a group morphism implementing distributed consensus
+\begin{equation} \label{eq1}
+P^\sigma_{*}(S): 0 \leftarrow \dots P^\sigma(S_{k-1})\xleftarrow {\partial_{k-1}} P^\sigma(S_{k})\xleftarrow {\partial_{k}} P^\sigma(S_{k+1}) \dots
+\end{equation} \label{eq1}
 
 \section{Finite Automata and State Transitions}
 \subsection{Node Abstract Data Type}
-There are four states a node can occupy, each node state corresponds to an interval of Orders in our chain complex.
+We define our Finite autamamta as a Mealy machine\footnote{\url{https://en.wikipedia.org/wiki/Mealy_machine}} with monoidal state transitions (transformation semigroup)\footnote{\url{https://en.wikipedia.org/wiki/Semiautomaton}}. Mealy automata satisfy the definition of a closed monoidal category.
+
 \begin{align*}
 S = \{Gossiper, Delegate, Offline\} \\
 \Sigma: FSM[S] \\
@@ -136,7 +133,7 @@ where $I_{g_{t-1}}$ is a subset of all simplexes in tier $t-1$ (as we know all s
 In the degenerate case of our definition of $R_T$, namely when $R_t = \{R_0\}$, $starCluster$ is a mempool as defined below, but of transactions which are isomorphic to all subtypes of BlockData via covariance.
 
 
-\subsubsection{Simplexes}
+\subsubsection{clique complexes}
 The clique complex of a graph G is a simplicial complex whose simplices are the cliques of G\footnote{https://arxiv.org/pdf/1007.0418.pdf}. We define a simplex $\sigma$ as a completely connected graph (clique) of nodes, with which we can perform cryptographic consensus. Given $\sigma = \{n_0 \dots n_i\}$, $\sigma$ is a simplex iff:
 
 1: $\sigma$ is a complete graph such that for a set of edges e, corresponding to nodes n,
@@ -176,7 +173,7 @@ SC(\sigma_k) = \bigcup_k st(n) \\
 \end{split}
 \end{equation}
 
-\subsection{Order ADT}
+\subsubsection{Order ADT}
 Consider the disjoint set\footnote{disjoint over nodes that constitute Radials (a node belongs only to one Radial)}, Order: $O = \{R_0 \dots R_k \} | k \in \mathbb{N}$. An Order, like a Radial is a distributed data structure. It's purpose is to provide a distributed execution context for maintaining state across network partitions. A network partition is a subset of resources within a distributed system. A similar process to $consensus$, called $partition$, occurring within a Radial in ordering $O$, broadcasts instructions to Radials in the Order $O-1$. These instructions tell nodes which Radial they need to join, and Radials what shard they need to host.  
 
 The shared execution context an Order uses is a distributed hash table. We follow the UrDHT\footnote{\url{https://scholarworks.gsu.edu/cgi/viewcontent.cgi?referer=https://www.google.com/&httpsredir=1&article=1108&context=cs_diss}} protocol to implement a state manager for our DHT. We dynamically rebalance caches of global chain state (shards) across the Radials within an ordering through our $repartition$ subroutine. The primary purpose of the Ordering abstraction is to encapsulate this rebalancing within the $repartition$ subroutine. Below we define the Order ADT
@@ -187,17 +184,7 @@ DHT: \{shard \dots shard_k\}_k, \\ &
 \end{align*}
 where the DHT is a service that maintains the sharding scheme (redundancy) routing between radials and partition maintains the valid partition of nodes across radials in the Order below.
 
-\subsection{Block Anatomy}
-We define a block as a sheaf on our protocol topology.
-The topological ordering between Orders follows the topological ordering of our blockchain. Our main block is a merkle tree that can be decomposed into a recursive hierarchy of merkle tree blocks. This hierarchy is a directed acyclic graph, just like our network topology which forms a dendrite like trie. The mirror symmetry of a dag within a dag is indicative of our blockchain cohomology\footnote{Hylochain and blockchain cohomology} where each block is a sheaf\footnote{links to sheafes and how they represent local data about a large dimensional space}.
-
-This symmetry arises out of our use of chain fibers\footnote{chain fibers}, which feed blocks from lower orders to upper orders. At the lowest order (sleeping state), blocks are transactions sent from individual nodes into the mempool of a Radial. At the first order, blocks are formed as the result the $consensus$, compressing transactions into a block of pointers then sending them to right, towards a higher order. At the highest order, blocks define the $state$ of the entire chain, which we will refer to as $globalState$. 
-
-The cohesion of our blockchain is maintained by defining a node's economic incentive to other node's economic incentive through interweaving signatures. Blocks sent downward are referenced in blocks sent upward and every node signs every message passed during consensus. Trust, in this sense is formed by a merkle tree of signatures, allowing us to explicitly trace every action back to the node who performed it. Nodes that are highly trusted are allowed a spot in the higher orders.
-
-Transactions are, type equivalently, blocks. In the same way we can prevent malicious forking through redundant sharding, we can use redundancy to prevent double spends. Double signing transactions allows a counterparty to enforce transaction ordering.
-
-In order to prevent censorship via sybil attack, we engineer an economic incentive to perform consensus faster than it would take to forge the signatures that stitch together the contents of a block. This is almost like a lazily evaluated proof of work. We don't actually do work, we just use make it computationally infeasible to forge the validity of our data before the data is notarized by a radial in a higher order.
+There is a notion of "flow"\footnote{\url{https://en.wikipedia.org/wiki/Geometric_flow}}between radials. There are two directions to our flow. The rightward direction gossips blocks from a Radials in a lower Order "upward" into the highest order, which maintains the $globalState$. The leftward direction gossips a blocks from Radials in higher orders "downward". These blocks contain the result of a higher order consensus, which "validates the validators". The contents of this block is used by the generator function for delegate selection, and partitioning. 
 
 \subsection{State Transitions}
 The following functions are used to form an edge between Radials. The most important is the $generator$ method which is used in both $consensus$ and $partition$. The symmetry in the use of $generator$ to select delegates for $consensus$ and for balancing shard/nodes in $partition$ is what implements our economic incentive. $generator$ is a deterministic function and at any point if a proposition is made by a node that does not adhere to the output of this function (is invalid), it will be notarized by all other nodes. The "right handedness" vs "left handedness" of flow correlates to the methods $consensus$ and $partition$.
@@ -225,11 +212,51 @@ p: (cBlock^{O}_{i-1}, pBlock^{O+1}_{i}) \rightarrow R_{k_i}
 \end{align*}
 Rebalancing shards across partitions is handled as a subprocess and detailed as a state transition.
 
-\section{Proof of Meme}
-MEME is a probability distribution of reputation scores that is used for delegate selection. It was designed to increase fault tolerance to over 50\% in some cases\footnote{guru abstract} by preventing the possibility of a sybil attack. MEME is a variation on GURU\footnote{} which is an equivalent of GHOST for Proof of Stake blockchains. MEME is our version of GURU like CASPER is Ethereum's GHOST implementation.
 
-\section{Security consistency and liveness guarantees}
 
+\section{Consistency and liveness guarantees}
+Informally, convergence refers to an implementation?s ability to ensure that writes issued by one node are
+observed by others\footnote{http://www.cs.cornell.edu/lorenzo/papers/cac-tr.pdf}. Convergence of a protocol complex can be calculated as a measure of the exactness between homologies. Using the fact that our protocol complex is enriched with a sheaf of well defined tensor product, we define a measure of divergence in terms of our protocol manifold.
+
+\subsection{Proof of Meme}
+Define Meme as a measure of the divergence of a protocol complex from it's structure. Before defining our cohomological measure, we need to show that topological convergence is implied by homological exactness. Extending the weak homotopy equivalence of the category of spaces to CW-complexes, we show a protocol topology is convergent by the homotopy equivalence of blocks to the fundamental class of a protocol complex.
+
+Take our definition of a protocol topology defined as a cw-complex with enrichment sheaf $\epsilon$ in the homology theory of homotopy types, we know that $\epsilon$ admits an injective resolution by \footnote{(10) in cohomology paper} thus $\partial = 0$ $\forall k$. If we allow for $\partial != 0$ arrive at a contradiction. 
+
+We can go a step further and show that an optimal network topology can be defined as the optimization of an objective function defined on our protocol manifold. Our protocol manifold is smooth if he tensor product over all protocols within a protocol topology commutes. We thus define our meme as a scalar within the vector space defined by the commutation of protocol sheaves. We define network optimality as a measure of the 
+
+\subsubsection{Yonah's Lemma}
+We know that since we have defined our automata as cofiber bundles, due to the fact simplicial complexes form a closed monoidal category\footnote{} they have the homotopy extension property\footnote{\url{https://en.m.wikipedia.org/wiki/Retract}} and dual to the homotopy lifting property of fibrations\footnote{\url{https://en.m.wikipedia.org/wiki/Homotopy_lifting_property}}. And if we define our outputs/inputs to each homotopy group as a sheaf with tensor that commutes with our monoidal state transition (see definition of our fsm)\footnote{\url{https://en.m.wikipedia.org/wiki/Transformation_semigroup}}, we can show that cohomology is formed by their smash product (use rgrahm or other one) which in the case of a monoidal enrichment becomes a manifold of those enrichment sheaves.
+
+\subsection{Protocol Topology}
+We define the primitives of our DAG chain. We come to the conclusion that our DAG chain is a directed acyclic graph who's direction is given by simplex graph\footnote{wikipedia/Simplexgraph} $\kappa$ and topological ordering follows the tiered ordering of $R_K$. The simplex graph $\kappa(G)$ of an undirected graph G is itself a graph, with one node for each clique (a set of mutually adjacent vertices) in G. As all of our simplexes are independent, $\kappa_j \ | \ j \subseteq t-1$ for tier $t$ is formed as a disjoint subset of simplexes in $t-1$. We define $\kappa$ as a mapping from an undirected graph G to a new graph $\kappa(G)$ who's vertices are cliques and compositions of cliques of G
+\begin{equation} \label{eq1}
+\begin{split}
+\kappa: \sigma_j \rightarrow \sigma_k \ | \ j \subset t-1, \sigma_k \in R_{t-1}.simplices
+\end{split}
+\end{equation}
+
+\subsection{Chain Fibering}
+Chain fibering is the formation of consensus blocks out of consensus blocks instead of transactions. This is varifiably sound up to isomorphism. We formulate notion of chain fibers by defining consensus in terms of a simplex graph $\kappa$. A chain fiber is given by 
+\begin{equation} \label{eq1}
+\begin{split}
+f \circ \kappa_j^{k}: \sigma_k  \rightarrow Block_k
+\end{split}
+\end{equation}
+
+where $\kappa_j^{k}$ is a simplex graph made up of chain fibers $Block_j$ in a preceding tier. The chain fibers from the preceding tier, $Block_j$, become the domain of the consensus function for tier k. We can say equivalently
+\begin{equation} \label{eq1}
+\begin{split}
+c_k: \{Block \dots Block\}_j \rightarrow Block_k
+\end{split}
+\end{equation}
+
+We can formally define the mempool $mem$ of simplex $\sigma_k$ in tier $t$ as 
+\begin{equation} \label{eq1}
+\begin{split}
+mem_k \equiv \{Block \dots Block\}_j \ | \ j \subset R_{t-1}.simplices
+\end{split}
+\end{equation}
 
 \bibliographystyle{plain}
 \end{document}
