@@ -1,16 +1,5 @@
 \BOOKMARK [1][-]{section*.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section*.2}{The Constellation Protocol Complex}{}% 2
-\BOOKMARK [1][-]{section*.3}{Finite Automata and State Transitions}{}% 3
-\BOOKMARK [2][-]{section*.4}{Node Abstract Data Type}{section*.3}% 4
-\BOOKMARK [2][-]{section*.5}{Radial Distributed Data Type}{section*.3}% 5
-\BOOKMARK [3][-]{section*.6}{clique complexes}{section*.5}% 6
-\BOOKMARK [3][-]{section*.7}{Order ADT}{section*.5}% 7
-\BOOKMARK [2][-]{section*.8}{State Transitions}{section*.3}% 8
-\BOOKMARK [3][-]{section*.9}{generator}{section*.8}% 9
-\BOOKMARK [3][-]{section*.10}{consensus}{section*.8}% 10
-\BOOKMARK [3][-]{section*.11}{partition}{section*.8}% 11
-\BOOKMARK [1][-]{section*.12}{Consistency and liveness guarantees}{}% 12
-\BOOKMARK [2][-]{section*.13}{Proof of Meme}{section*.12}% 13
-\BOOKMARK [3][-]{section*.14}{Yonah's Lemma}{section*.13}% 14
-\BOOKMARK [2][-]{section*.15}{Protocol Topology}{section*.12}% 15
-\BOOKMARK [2][-]{section*.16}{Chain Fibering}{section*.12}% 16
+\BOOKMARK [1][-]{section*.2}{Model Definition}{}% 2
+\BOOKMARK [1][-]{section*.3}{Planar cellular solution}{}% 3
+\BOOKMARK [1][-]{section*.4}{Results and properties}{}% 4
+\BOOKMARK [1][-]{section*.5}{References}{}% 5
