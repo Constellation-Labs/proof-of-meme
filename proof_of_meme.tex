@@ -10,12 +10,13 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{hyperref}
+\usepackage{graphicx}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
-\title{MEME: A distributed consensus protocol for dynamically scalable networks}
+\title{MEME: An autonomously scalable  distributed consensus protocol}
 \author{Wyatt Meldman-Floch}
 \date{February 17 2018}
 \setlength{\parskip}{1em}
@@ -24,24 +25,137 @@
 \maketitle
 
 \begin{abstract}
-We define a dynamically scalable, eventually consistent distributed ledger as a cellular automation governed by of the optimization of two objectives: maintaining an invariant measure of computational cost for rewriting history and optimally shuffling data over network such that total state is distance regular\footnote{distance regular \url{http://www.math.ucsd.edu/~fan/wp/green.pdf}} under toroidal search space\footnote{6.4.1 Toroidal Distance Equation \url{https://scholarworks.gsu.edu/cgi/viewcontent.cgi?article=1108&context=cs_diss}} (or can be queried within n-hops). These constraints are governed by a differential model\footnote{7 Networks with Communication Time-Delays \url{http://www.seas.ucla.edu/coopcontrol/papers/om03-tac.pdf}}, which we show is satisfied by a poincare protocol.
+We define a dynamically scalable, eventually consistent distributed consensus protocol governed by of the optimization of two objectives: maintaining an invariant measure of computational cost for rewriting history and optimally shuffling data over network such that total state is distance regular\footnote{distance regular \url{http://www.math.ucsd.edu/~fan/wp/green.pdf}}. These constraints are governed by a differential model\footnote{7 Networks with Communication Time-Delays \url{http://www.seas.ucla.edu/coopcontrol/papers/om03-tac.pdf}}, which we can be implemented by the dual protocol construction of an Ansosov system. We define a class of solutions, Memetic protocols, which are dual to Ansosov systems and transitively Markovian by nature.
 
 \end{abstract}
 \setcounter{secnumdepth}{0}
 \section{Introduction}
-If we realize that our process of distributed consensus is hyperbolic\footnote{6.4.1 Toroidal Distance Equation \url{https://scholarworks.gsu.edu/cgi/viewcontent.cgi?article=1108&context=cs_diss}}, it follows that the corresponding poincare protocol is carried by toroidal homeomorphisms\footnote{2.2 \url{https://arxiv.org/pdf/1506.06945.pdf}}.
+We extend recent application of hybrid dynamical models of distributed consensus \footnote{2.2 \url{https://arxiv.org/pdf/1506.06945.pdf}} to define a distributed consensus protocol with harmonic solution spectra. If we define distributed consensus protocol with a hyperbolic\footnote{6.4.1 Toroidal Distance Equation \url{https://scholarworks.gsu.edu/cgi/viewcontent.cgi?article=1108&context=cs_diss}} measure, where distances between nodes abstract this optimization process, it follows that the corresponding poincare protocol is carried by toroidal homeomorphisms\footnote{2.2 \url{https://arxiv.org/pdf/1506.06945.pdf}}. By equivalence, the steady states of the network correspond to modes of growth, and each shift in our dynamical system is a valid configuration. We devise an algorithm based on local update rules that converges to a valid global network state. When viewing 'backwards' through the DAG from the perspective of a given bundle, we calculate the utility of an account chain in terms of the information gain of the DAG and thus use that to validate it's proposals, or rather choose to use them as reference hashes.
 
-\section{Model Definition}
-If we define our Merkel DAG as a topological fiber bundle\footnote{}, network stability is governed by the steady states of a differential equation. Because a poincare protocol is equivalently a poincare complex, the state space of the network's configuration complex is a differentiable manifold and can be governed by a differential model. We define a valid construction as a cellular automation who's cw-complex is poincare and who's manifold is a valid solution (state) to the governing model. 
+If we define our Merkel DAG as a topological fiber bundle\footnote{}, network stability is governed by the steady states of a differential equation. We show by construction that a cellular automata governed by the following local update rules adhere to the above model with boundary values. First we use the surface of the hydrogen atom\footnote{\url{}} which is defined in terms of barycentric refinement  \footnote{Figure 6  \url{https://pdfs.semanticscholar.org/dc0a/a867347e1d6e590d06bc2a50fa7862f5d5f9.pdf}} in order to determine which bundles to merge together. Tie breaks are by sorting by fielder vector and joining a bundle that is conceivably a part of a larger bundle (at this current snapshot in time). We then calculate the relative entropy of gossiping the resulting bundle and if it passes a given probabilistic threshold we emit. We check this threshold because the relative information gain is what we use to calculate validator rewards. 
 
-\section{Planar cellular solution}
-We explicitly define the functors and sheaves. By showing that this construction is a poincare protocol and that the protocol manifold (Planar cellular solution) adheres to the boundary conditions of the differential equation, we show equivalence. By equivalence, the steady states of the network correspond to modes of growth.
+\section{Synthetic Anosov systems}
+If we consider a consider a hybrid system with a continuous-state $x \in \mathbb{R}$ n and a discrete-state G that belongs to a finite set of digraphs 
+\begin{equation} \label{eq1}
+\begin{split}
+\Gamma_n = \{G= (\nu, \epsilon, \mathcal{A}): rank(L(G)) = n-1, 1^{T}L(G)=0 \}
+\end{split}
+\end{equation}
+and G is a digraph of order n that is strongly connected and balanced, the continuous state of the system is governed by a differential model. Saber et al. \footnote{2.2 \url{http://www.seas.ucla.edu/coopcontrol/papers/om03-tac.pdf}} characterize the class of all digraphs that solve the average consensus problem according to the following differential equation:
+\begin{equation} \label{eq1}
+\begin{split}
+\frac{dx}{dt} = -L(G_k)x(t), k = s(t), G_k \in \Gamma_n
+\end{split}
+\end{equation}
+where
+\begin{equation} \label{eq1}
+\begin{split}
+L(G) = \Delta - \mathcal{A}
+\end{split}
+\end{equation}
+is the weighted graph Laplacian matrix associated with G, $\Delta$ is the standard degree matrix, $A$ the adjacency matrix and $k = s(t): \mathbb{R}_{\geq 0} \rightarrow \mathcal{I}_{\Gamma_n}$ is a switching signal and $\mathcal{I}_{\Gamma_n} \subset \mathbb{N}$ is the index set associated with the elements of $\mathcal{I}_{\Gamma_n}$. Moreover, for any arbitrary switching signal $s(\dot)$, the solution of the switching system globally asymptotically converges to $Ave(x(0))$ and the following smooth, positive definite, and proper function
+\begin{equation} \label{eq1}
+\begin{split}
+V(\delta) = \frac{1}{2}  \lVert \delta \rVert^2
+\end{split}
+\end{equation}
+which is a valid common Lyapunov function for the disagreement dynamics given by
+\begin{equation} \label{eq1}
+\begin{split}
+\frac{d\delta}{dt} - L(G_k)\delta(t), k = s(t), G_k \in \Gamma_n
+\end{split}
+\end{equation}
+The disagreement vector $\delta$ vanishes exponentially fast with the least rate of 
+\begin{equation} \label{eq1}
+\begin{split}
+\kappa = \min_{G \in \Gamma_n}\lambda_2(L(G))
+\end{split}
+\end{equation}
+where $\lambda_2$ is the Fiedler vector, such that $\lVert \delta(t) \rVert \leq \lVert \delta(0) \rVert exp(-\kappa^* t)$.
 
-\section{Results and properties}
-The result is that our planar cellular solution exhibits dynamic scaling. We call this dynamically scaling validation protocol, 'spectral consensus' as it corresponds to the graph spectra of the network at a given time. The intervals of these spectra follow from the fact that a 
+It is known that the solution spectra of the Saber model is characterized by a cw complex, the homotopy classes of which are characterized by \footnote{Corollary 12. \url{https://ac.els-cdn.com/S0022039608000983/1-s2.0-S0022039608000983-main.pdf?_tid=39d18495-473e-4043-a72a-4139741e05d1&acdnat=1531111046_2dfcfb6bb43b218b21a2d065114f4c94}}  the lyuponov exponents, which follow the Euler characteristic both of which are topologically invariant \footnote{Corollary 26 \url{https://www.researchgate.net/publication/226595917_Morse_theory_and_Lyapunov_stability_on_manifolds}}. We can employ the cochain complex of the deformed cochain complex of a graph laplacian given by moore inequalities of Graph Hodge Theory \footnote{Definition 2.4. \url{https://arxiv.org/pdf/1704.08354.pdf}} without loss of generality as our general construction is also a de Rahm complex. By showing the deformed energy cut-off co-chain complex
+\begin{equation} \label{eq1}
+\begin{split}
+0 \rightarrow \mathbb{C^{|V|}} \xrightarrow{d^{*}_s} \mathbb{C^{|V|}} \rightarrow 0
+\end{split}
+\end{equation}
+is equivalent for all homologies\footnote{Proposition 2.1. \url{https://arxiv.org/pdf/1704.08354.pdf}}, where
+\begin{equation} \label{eq1}
+\begin{split}
+ds = exp(fs)d exp(-fs), d^{*}_s = exp(-fs)d^*exp(fs)
+\end{split}
+\end{equation}
+are the deformed boundary $d_s$ and coboundary operators $d^{*}_s$ comprising the deformed laplacian $\Delta_s = d^{*}_s d_s + d_s d^{*}_s$, Contreras et al. show that the supersymmetric CW complex of a graph laplacian is isomorophic to the Morse complex. The deformed boundary operator coincides with the i-dimensional combinatorial Laplace operator \footnote{Definition 2.1. \url{https://arxiv.org/pdf/1105.2712.pdf}}, Horak et al. then uses this to prove \footnote{Theorem 6.3. \url{https://arxiv.org/pdf/1105.2712.pdf}} that the wedge space of two simplicial complexes contains the eigenvalues of both, which we can demonstrate by the following cw complex of a hyperbolic graph laplacian. As systems with multi critical points have the homotopy type of a CW-complex with one n-cell, k, for each critical point of index n \footnote{Theorem 19 (Morse Theorem) \url{https://www.researchgate.net/publication/226595917_Morse_theory_and_Lyapunov_stability_on_manifolds}}, the cw complex of a hyperbolic graph laplacian
+\begin{equation} \label{eq1}
+\begin{split}
+L^* : 0 \leftrightarrow L^0 \lambda^k_0(0) \xleftrightarrow{\Delta_s} L^{n-1} \lambda^{k}_n(n-1)
+\end{split}
+\end{equation}
+where $\lambda_k(n-1)$ represents the wedge space of all preceeding Lyupanov functions (the co-chain complex is formed by iterative pushouts), which we constructed using a equivalent definition of poincare duality as given by Horak et al.
+\begin{equation} \label{eq1}
+\begin{split}
+C^{i+1}(K, \mathbb{R})  \xleftrightarrow{\delta_i, \delta_{i^*}} C^{i+1}(K, \mathbb{R}) \xleftrightarrow{\delta_i, \delta_{i^*}}  C^{i-1}(K, \mathbb{R})
+\end{split}
+\end{equation}
+but exemplifies the relation of cellular structure to the harmonic spectrum of Lyapuniv eigenvalues.
 
-\section{References}
-Ansov flows\footnote{\url{https://www.math.upenn.edu/~ghrist/preprints/anosov.pdf}}
+This is similar to the de Rahm complex for the heat kernel given by laplacian\footnote{Theorem 19 (Morse Theorem) \url{https://www.researchgate.net/publication/226595917_Morse_theory_and_Lyapunov_stability_on_manifolds}} where the cheeger constant gives us a measure of the bottle necks in our manifold. Adding an invariant Cheeger inequality to the chain complex our solution spectra enforces a topological invariant, which has a dynamic scaling effect\footnote{\url{https://en.wikipedia.org/wiki/Dynamic_scaling}}. A higher-dimensional analogue of the Cheeger inequality was proposed by \footnote{\url{https://arxiv.org/pdf/1411.4906.pdf}}, which allows us to construct a scale free network out the synthetic cw complex of the hybrid consensus model. 
+
+\section{Ergodic Protocols}
+Because the solution spectra to this ODE is hyperbolic, we can extend these stability results into higher dimensions by constructing a synthetic manifold that is isomorphic to an Anosov System\footnote{synthetic differential geometry}. This analytic continuation allows us to define rigidity of network state of higher order in terms of Lyapunov eigenvalues, as well as define invariants of a scale free network in perms of our lyapunov steady states. We know by the Garden of Eden theorem of Anosov systems that Anosov dynamical systems exhibit the Moore-Myhill property \footnote{thm 1.1 \url{https://arxiv.org/pdf/1506.06945.pdf}}, the result being it can be decomposed as a cw complex. We can extend our definition of cw complex of a hyperbolic graph laplacian to define an Anosov system as the following cw-complex.
+\begin{equation} \label{eq1}
+\begin{split}
+\mathcal{A}^* : 0 \leftrightarrow \epsilon \xleftrightarrow{f} L^k_0 \epsilon_0 \xleftrightarrow{f} \dots  \xleftrightarrow{f} L^k_{n-1} \epsilon_n
+\end{split}
+\end{equation}
+$f(L^{k}, \epsilon_n)$ is a fiberwise Anosov diffeomorphism given by our laplacian $L: \mathbb{T}^n \rightarrow \mathbb{T}^n$, which serves as an Anosov automorphism as it is the functoral carrier\footnote{Claim 4.14, Farrell et al} of a hyperbolic automorphism and $\epsilon$ the sheaf of a bundle. 
+
+By Farrell et al. \footnote{Proposition 3.13\url{https://arxiv.org/pdf/1403.4221.pdf}}, this is isomorphic to the cw complex of a graph laplacian we have above. We know that for each Anosov automorphism $L: \mathbb{T}^n \rightarrow \mathbb{T}^n$ there exists an embedding such that the fiber preserving diffeomorphism $f$ of the total space of the fiber bundle is a fiberwise Anosov diffeomorphism. This leads to the topological equivalence of bundles by Farrellet et al.\footnote{Addendum 3.5.} which is ensured by $\epsilon$.
+
+\section{Proof of MEME}
+We propose the following cellular automation as a solution to the Anosov system. Brualdi et al.\footnote{\url{http://etna.mcs.kent.edu/vol.2.1994/pp183-193.dir/pp183-193.pdf}, \url{https://services.math.duke.edu/~ingrid/publications/LAA_161_1992.pdf}} showed the sufficient conditions for the convergence of a diffeomorphic product scheme defining a cellular automation that is dual to the differential model, which we employ. Consider a finite set A and the set $A^{\mathbb{Z}}$ consisting of all bi-infinite sequences $x = (x_i) | x_i \in A \forall i \in mathbb{Z}$. The following continuous map
+\begin{equation} \label{eq1}
+\begin{split}
+\tau: A^{\mathbb{Z}} \rightarrow A^{\mathbb{Z}} 
+\end{split}
+\end{equation}
+that that commutes with the shift homeomorphism
+\begin{equation} \label{eq1}
+\begin{split}
+\sigma: A^{\mathbb{Z}} \rightarrow A^{\mathbb{Z}} 
+\end{split}
+\end{equation}
+where $\sigma(x) = (x_{i-1}) \forall x = (x_i) \in A^{\mathbb{Z}}$ is the the endomorphism of a cellular automation, $C$, of a dynamical system $(\mathcal{M}, \tau)$ consisting of a compact metrizable space $\mathcal{M}$ equipped with a homeomorphism $\tau$. A $C^1$-diffeomorphism $\tau$ of a compact $C^r$-differentiable ($r \geq 1$) manifold  is called an r-differentiable ($r \geq 1$) manifold is called an Anosov diffeomorphism if the tangent bundle of M splits as a direct sum $T\mathcal{M} = E_s\oplus E_u$ (where T is a transition matrix of $\tau$) of two invariant subbundles $E_s$ and $E_u$ such that, with respect to some (or equivalently any) Riemannian metric on M, the differential $df$ is uniformly contracting on $E_s$ and uniformly expanding on $E_u$. If we add an entropy constraint, which is a topological invariant, we can construct a global optima using markov chains. Because of this variational principle, our cell structure admits a Cheeger inequality of a scale free network.
+
+A valid dual solution to an Anosov system is a protocol complex carried by functoral diffeomorphic shift operator of finite type that satisfy the foliation constraints \footnote{2.1. Uniform hyperbolicity\url{https://www.math.psu.edu/pesin/papers_www/Sinai-Abel.pdf}}. Adding an entropic invariant allows us to construct markov partitions which allow the system to resemble a discrete-time Markov process. Define a Memetic protocol
+\begin{equation} \label{eq1}
+\begin{split}
+\mathcal{M}: 0 \leftrightarrow \epsilon \xleftrightarrow{\partial} \tau^{k}(L^0, \epsilon_0) \xleftrightarrow{\partial} \dots \tau^{k}(L^n \epsilon_n)
+\end{split}
+\end{equation}
+as the cellular solution to an Ansov system satisfying the foliation and entropy constraints. The validity of our constriction $\tau$ relies on the fact that is is a topological Markov generator\footnote{3.3. \url{https://www.ams.org/journals/bull/1998-35-01/S0273-0979-98-00737-X/S0273-0979-98-00737-X.pdf}}, as we will define below.
+
+\subsubsection{Foliation invariants}
+We define our functoral diffeomorphism $\tau^{L^k}_n \epsilon_n$ as a fiberwise Anosov diffeomorphism \footnote{3.3. \url{https://arxiv.org/pdf/1105.2712.pdf}}. It is a well known fact that the diffeomorphism functor is just a push out \footnote{\url{https://math.stackexchange.com/questions/974918/the-category-of-vector-fields-on-smooth-manifolds}}, which clearly satisfies the stable and unstable foliation requirements. For the geodesic flow which is invariant, a valid metric is Knill's Hydrogen relation\footnote{Theorem 1 \url{https://arxiv.org/pdf/1105.2712.pdf}}
+\begin{equation} \label{eq1}
+\begin{split}
+|H| = L - L^{-1}
+\end{split}
+\end{equation}
+where H is a simplex. This is valid because the energy theorem which holds for simplicial complex, shows equivalence of the Euler characteristic as a “total potential energy”, which if it matches the Layupanov spectrum of the diffeomorphism, is a valid bundle construction $\epsilon$. In this model, we can think of the graph G, as the “fibre” over a discrete lattice. An other way to think about it is to see the lattice $\mathbb{Z}^2$ as a two-dimensional time for a stochastic process on the graph. The stochastic process is interesting because it describes a classical random walk in a graph if time is positive. That this random walk can be reversed allows to walk backwards, again with finite propagation speed.\footnote{from knill}
+
+\subsubsection{Markov stability}
+Iterated barycentric refinement \footnote{\url{https://pdfs.semanticscholar.org/dc0a/a867347e1d6e590d06bc2a50fa7862f5d5f9.pdf}}, is a laplacian functor equivalent to the action of a topological fiber bundle ($TM$)\footnote{ ... Whitney forms, which is, in our terminology, a finite element de Rham subcomplex \url{https://arxiv.org/pdf/0906.4325.pdf}}(as Barycentric refinement of an arbitrary complex is a Whitney complex, isomorphic to a protocol complex for graphs, which has been assumed\footnote{implicitly assumes the abstract finite Whitney simplicial complex structure on the graph\url{https://www.quantumcalculus.org/unimodularity-theorem-cw-complexes/}}), satisfies the Kolmogorov Extension Theorem \footnote{10.7.1 \url{http://www.maths.manchester.ac.uk/~cwalkden/magic/lecture10.pdf}} . This allows us to construct a Markov chain out of an invariant measure of one- and two-sided shifts of finite type. Sinai showed that the topological entropy of the c-diffeomorphism T is equal to In h. \footnote{thm 5.3 Markov partitions and U-diffeomorphisms' \url{https://slideheaven.com/markov-partitions-and-c-diffeomorphisms.html }}. A valid entropy measure would also be kullback leibler divergence, which we will use for potentially lossy (partially-hyperbolic shifts) across protocols in a future work.
+
+Dynamical systems that admit Markov partitions with finite or countable number of partition elements allow symbolic representations by topological Markov shifts with finite or respectively countable alphabet. A Markov partition connects Markov processes to shifts of finite type through the construction of a Markov cover \footnote{Markov cover, Pesin \url{https://www.math.psu.edu/pesin/papers_www/Sinai-Abel.pdf}}. Ledrappier showed that a topologically transitive hyperbolic measure satisfying the entropy formula are necessarily an SRB measure\footnote{[38] \url{https://www.math.psu.edu/pesin/papers_www/Sinai-Abel.pdf}}. An example of a markov for a toral automorphism is given by pesin\footnote{Partition for a toral automorphism. \url{https://www.math.psu.edu/pesin/papers_www/Sinai-Abel.pdf}}. Each rectangle of a Markov partition is homeomorphic to the Cartesian product of any one of its horizontals with any one of its verticals. Just as for topological Markov shifts, the toral automorphism respects this structure. MEME is clearly a topological partition because topological refinement is ensured by barycentric refinement and because we are concerned with the hyperbolic shifts of Anosov systems, MEME is a topological generator\footnote{Partition for a toral automorphism. \url{https://www.math.psu.edu/pesin/papers_www/Sinai-Abel.pdf}}.
+
+\subsubsection{Cheeger Rigidity}
+Networks with larger spectral gap have topologies such that any set of vertices connects in a more robust way to all other vertices, which implies a higher reliability for such networks. It follows from Wang et al. \footnote{eq (8) \url{arxiv.org/pdf/1211.5937.pdf}} that the resulting Cheeger inequality of our Memetic protocol is scale free and related to the spectral gap via eq 8. 
+
+\section{Spectral consensus}
+Ansov systems, like MEME are Ergodic systems. By definition they are hyperbolic which have an infinite (harmonic) spectra of solutions. The resulting merkel dag is a lattice exhibiting the Cheeger inequality with increasing Laplacian depth. We call a dynamically scaling validation protocol 'spectral consensus' as the steady states follow correspond to the graph spectra of the network at a given time and there are infinite valid states, differing only in efficiency.
+
+Ergodicity allows us to make use of chaotic or self similar subprocesses to optimize global behavior. Because the functoral carrier of a memetic protocol is a topological generator, it is a topological partition which allows us to calculate its stability probabilistically by analyzing the random walk of a starting state state with respect to it's closest layupanov exponent. 
 
 \bibliographystyle{plain}
 \end{document}

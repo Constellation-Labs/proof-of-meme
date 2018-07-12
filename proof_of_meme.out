@@ -1,5 +1,8 @@
 \BOOKMARK [1][-]{section*.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section*.2}{Model Definition}{}% 2
-\BOOKMARK [1][-]{section*.3}{Planar cellular solution}{}% 3
-\BOOKMARK [1][-]{section*.4}{Results and properties}{}% 4
-\BOOKMARK [1][-]{section*.5}{References}{}% 5
+\BOOKMARK [1][-]{section*.2}{Synthetic Anosov systems}{}% 2
+\BOOKMARK [1][-]{section*.3}{Ergodic Protocols}{}% 3
+\BOOKMARK [1][-]{section*.4}{Proof of MEME}{}% 4
+\BOOKMARK [2][-]{section*.5}{Foliation invariants}{section*.4}% 5
+\BOOKMARK [3][-]{section*.6}{Markov stability}{section*.5}% 6
+\BOOKMARK [3][-]{section*.7}{Cheeger Rigidity}{section*.5}% 7
+\BOOKMARK [1][-]{section*.8}{Spectral consensus}{}% 8

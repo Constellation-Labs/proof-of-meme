@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  6 JUL 2018 09:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  12 JUL 2018 16:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -318,26 +318,68 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip52
 )
-(./proof_of_meme.aux)
+(./proof_of_meme.aux
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+)
 \openout1 = `proof_of_meme.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
 \c@lstlisting=\count124
-
-(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count125
 \scratchdimen=\dimen131
@@ -368,7 +410,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box33
-Package hyperref Info: Link coloring OFF on input line 23.
+Package hyperref Info: Link coloring OFF on input line 24.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -378,31 +420,25 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count131
 )
-LaTeX Info: Redefining \ref on input line 23.
-LaTeX Info: Redefining \pageref on input line 23.
-LaTeX Info: Redefining \nameref on input line 23.
+LaTeX Info: Redefining \ref on input line 24.
+LaTeX Info: Redefining \pageref on input line 24.
+LaTeX Info: Redefining \nameref on input line 24.
 
 (./proof_of_meme.out) (./proof_of_meme.out)
 \@outlinefile=\write3
 \openout3 = `proof_of_meme.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 25.
+LaTeX Font Info:    Try loading font information for U+msa on input line 26.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 25.
+LaTeX Font Info:    Try loading font information for U+msb on input line 26.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 1147) in paragraph at lines 27--27
-[][][]\OT1/cmr/m/n/8 6.4.1 Toroidal Dis-tance Equa-tion []$\OT1/cmtt/m/n/8 http
-s : / / scholarworks . gsu . edu / cgi / viewcontent .
- []
-
-
-Underfull \hbox (badness 1147) in paragraph at lines 32--32
+Underfull \hbox (badness 1147) in paragraph at lines 33--33
 [][][]\OT1/cmr/m/n/8 6.4.1 Toroidal Dis-tance Equa-tion []$\OT1/cmtt/m/n/8 http
 s : / / scholarworks . gsu . edu / cgi / viewcontent .
  []
@@ -410,39 +446,116 @@ s : / / scholarworks . gsu . edu / cgi / viewcontent .
 [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 47.
+Overfull \hbox (21.0511pt too wide) in paragraph at lines 35--35
+[][][]\OT1/cmr/m/n/8 Figure 6 []$\OT1/cmtt/m/n/8 https : / / pdfs . semanticsch
+olar . org / dc0a / a867347e1d6e590d06bc2a50fa7862f5d5f9 .
+ []
 
 [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 47.
+Underfull \hbox (badness 10000) in paragraph at lines 76--76
+[][][]\OT1/cmr/m/n/8 Corollary 12. []$\OT1/cmtt/m/n/8 https : / / ac . els-[]cd
+n . com / S0022039608000983 / 1-[]s2 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--76
+\OT1/cmtt/m/n/8 0-[]S0022039608000983-[]main . pdf ? _tid = 39d18495-[]473e-[]4
+043-[]a72a-[]4139741e05d1 & acdnat =
+ []
+
+
+Underfull \hbox (badness 3000) in paragraph at lines 76--76
+[][][]\OT1/cmr/m/n/8 Corollary 26 []$\OT1/cmtt/m/n/8 https : / / www . research
+gate . net / publication / 226595917 _ Morse _ theory _
+ []
+
+[3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 116--116
+[][][][]$\OT1/cmtt/m/n/8 http : / / etna . mcs . kent . edu / vol . 2 . 1994 / 
+pp183-[]193 . dir / pp183-[]193 . pdf$[]\OT1/cmr/m/n/8 , []$\OT1/cmtt/m/n/8 htt
+ps :
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 136--136
+[][][]\OT1/cmr/m/n/8 3.3. []$\OT1/cmtt/m/n/8 https : / / www . ams . org / jour
+nals / bull / 1998-[]35-[]01 / S0273-[]0979-[]98-[]00737-[]X /
+ []
+
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 138.
+
+
+Overfull \hbox (86.05615pt too wide) in paragraph at lines 139--139
+[][][][]$\OT1/cmtt/m/n/8 https : / / math . stackexchange . com / questions / 9
+74918 / the-[]category-[]of-[]vector-[]fields-[]on-[]smooth-[]manifolds$[]| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--148
+[][][][]$\OT1/cmtt/m/n/8 https : / / pdfs . semanticscholar . org / dc0a / a867
+347e1d6e590d06bc2a50fa7862f5d5f9 .
+ []
+
+
+Underfull \hbox (badness 7047) in paragraph at lines 148--148
+[][][]\OT1/cmr/m/n/8 thm 5.3 Markov par-ti-tions and U-diffeomorphisms' []$\OT1
+/cmtt/m/n/8 https : / / slideheaven . com /
+ []
+
+[6] [7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 161.
+ [8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 161.
  (./proof_of_meme.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 47.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 47.
-Package rerunfilecheck Info: File `proof_of_meme.out' has not changed.
-(rerunfilecheck)             Checksum: 633202399F8887E8D96A7A79A15D57E7;264.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 47.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 161.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 161.
+
+
+Package rerunfilecheck Warning: File `proof_of_meme.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `proof_of_meme.out':
+(rerunfilecheck)             Before: 9CA18D171ADFC6D3F8FE252FD16C8E87;453
+(rerunfilecheck)             After:  71D7CAFDDE858ECB7817BA151B4B349A;454.
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 161.
  ) 
 Here is how much of TeX's memory you used:
- 8192 strings out of 492649
- 118717 string characters out of 6129622
- 217803 words of memory out of 5000000
- 11972 multiletter control sequences out of 15000+600000
- 12909 words of font info for 51 fonts, out of 8000000 for 9000
+ 8256 strings out of 492649
+ 119437 string characters out of 6129622
+ 224879 words of memory out of 5000000
+ 11977 multiletter control sequences out of 15000+600000
+ 13217 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,8n,32p,838b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
-exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive
-/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on proof_of_meme.pdf (2 pages, 117277 bytes).
+ 28i,25n,32p,1392b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
+ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/tex
+mf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on proof_of_meme.pdf (8 pages, 232997 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
- 15 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 319 PDF objects out of 1000 (max. 8388607)
+ 287 compressed objects within 3 object streams
+ 73 named destinations out of 1000 (max. 500000)
+ 65 words of extra memory for PDF output out of 10000 (max. 10000000)
 
