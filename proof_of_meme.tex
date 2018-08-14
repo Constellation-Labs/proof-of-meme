@@ -113,7 +113,7 @@ $f(L^{k}, \epsilon_n)$ is a fiberwise Anosov diffeomorphism given by our laplaci
 By Farrell et al. \footnote{Proposition 3.13\url{https://arxiv.org/pdf/1403.4221.pdf}}, this is isomorphic to the cw complex of a graph laplacian we have above. We know that for each Anosov automorphism $L: \mathbb{T}^n \rightarrow \mathbb{T}^n$ there exists an embedding such that the fiber preserving diffeomorphism $f$ of the total space of the fiber bundle is a fiberwise Anosov diffeomorphism. This leads to the topological equivalence of bundles by Farrellet et al.\footnote{Addendum 3.5.} which is ensured by $\epsilon$.
 
 \section{Proof of MEME}
-We propose the following cellular automation as a solution to the Anosov system. Brualdi et al.\footnote{\url{http://etna.mcs.kent.edu/vol.2.1994/pp183-193.dir/pp183-193.pdf}, \url{https://services.math.duke.edu/~ingrid/publications/LAA_161_1992.pdf}} showed the sufficient conditions for the convergence of a diffeomorphic product scheme defining a cellular automation that is dual to the differential model, which we employ. Consider a finite set A and the set $A^{\mathbb{Z}}$ consisting of all bi-infinite sequences $x = (x_i) | x_i \in A \forall i \in mathbb{Z}$. The following continuous map
+We propose the following cellular automation as a solution to the Anosov system. Brualdi et al.\footnote{\url{http://etna.mcs.kent.edu/vol.2.1994/pp183-193.dir/pp183-193.pdf}, \url{https://services.math.duke.edu/~ingrid/publications/LAA_161_1992.pdf}} showed the sufficient conditions for the convergence of a diffeomorphic product scheme defining a cellular automation that is dual to the differential model, which we employ. Consider a finite set A and the set $A^{\mathbb{Z}}$ consisting of all bi-infinite sequences $x = (x_i) | x_i \in A \forall i \in \mathbb{Z}$. The following continuous map
 \begin{equation} \label{eq1}
 \begin{split}
 \tau: A^{\mathbb{Z}} \rightarrow A^{\mathbb{Z}} 
@@ -156,6 +156,35 @@ Networks with larger spectral gap have topologies such that any set of vertices 
 Ansov systems, like MEME are Ergodic systems. By definition they are hyperbolic which have an infinite (harmonic) spectra of solutions. The resulting merkel dag is a lattice exhibiting the Cheeger inequality with increasing Laplacian depth. We call a dynamically scaling validation protocol 'spectral consensus' as the steady states follow correspond to the graph spectra of the network at a given time and there are infinite valid states, differing only in efficiency.
 
 Ergodicity allows us to make use of chaotic or self similar subprocesses to optimize global behavior. Because the functoral carrier of a memetic protocol is a topological generator, it is a topological partition which allows us to calculate its stability probabilistically by analyzing the random walk of a starting state state with respect to it's closest layupanov exponent. 
+
+\section{Markov partitioning}
+We restrict our focus to protocol complexes carried by a linear hyperbolic automorphism of the n-torus as it is of most interest to us. We've shown in other work that two protocol complexes carrying sheaves sharing homotopy $\epsilon_{\aleph}: \epsilon_a$, $\epsilon_{\aleph}: \epsilon_b$ exhibit chain homotopy i.e. $\epsilon_a \circ \epsilon_b = \epsilon_b \circ \epsilon_a$. Here we have a singular homology $\epsilon_{\aleph}$ which we name after the aleph category. 
+
+Chain homotopy is equivalent to topological semiconjugacy\footnote{A topological  between a pair of dynamical systems ... \url{https://en.wikipedia.org/wiki/Mixing_(mathematics)}}, which allows us to construct a Markov partition for a mixture of subshifts of finite type. For a Markov partition $\mathcal{R}$ of a system $(X, f)$ define the adjacency matrix $\mathcal{A}$ such that $a_{ij} = 1$ if $f(inf(\mathcal{R}) \cap inf(\mathcal{R})) \neq \emptyset$. A subshift of finite type $(\Sigma_A, \sigma)$ is said to be associated with R and there is a canonical semiconjugacy h from $(\Sigma_A, \sigma)$ to $(X, f)$. We extend Fried's proof that any finitely presented dynamical system has a Markov partition\footnote{[5]\url{https://pdfs.semanticscholar.org/ff58/5e964c427e14a17041557f5dc386959be9fd.pdf}}, and use et al's construction of the markov partion to construct the return map $T^{\epsilon}$ of a synthetic protocol complex.
+
+Extending MacKay's implicit expression for the Hausdorff dimension $\mathcal{D}(\mathcal{M}$ of the subset $L(\mathcal{M})$ of the smooth transversal of a stable foliation comprised of points with positive Lyapunov exponent equal to $\mathcal{M}$ \footnote{[M], Demers}, Demers et al. \footnote{3.4.2 The Markov partition \url{http://wmii.uwm.edu.pl/~wojtkowski/pseudo14.pdf}} show how to compose a connectivity matrix $M: c(R) = M(i_0, i_1) \dots M(i_{r-1}, i_r)$ (where $c$ is the number of connected components of $T(\mathcal{R}_i) \cap \mathcal{R}_j $ the markov partition $R$ and the return map 
+$T^{\epsilon}$ into transition matrices of ergodic markov chains. The structure of the matrix follows from the fact that $T(\mathcal{R}_2) = \mathcal{R}_3$ and $T(P_3) = P_4$. Their main goal is the same as ours, calculate the hausdorff dimension. The topological entropy of $T_k$ is given by $h_{top}(T_k) = log \alpha_k$ for each k'th eigenvalue. Lebesgue measure is the SRB measure of the system and metric entropy is equal to $h_m(T_k) = \frac{1}{2}log |\lambda_k|$ following Pesin’s formula. Maintaining a Hausdorff dimension that maintains the overall Cheeger inequality is overall optimal for the network.
+
+By rectifying the elements of our Markov partition $\mathcal{R}$, we show that $T$ can be viewed as an extension of a map $T^{\epsilon}$ which is metrically equivalent to and generates the same Markov process as the toral automorphism defined by its transition matrix. Information about the exponential decay rates of the Perron–Frobenius cocycle is given by its Lyapunov spectrum \footnote{3. \url{http://web.science.unsw.edu.au/~froyland/FLQ.pdf}}. This in turn allows us to compute directly the Hausdorff dimensions of the level sets of the positive Lyapunov exponent. We define the return map $T^{\epsilon}$ as the derivative of $T$, which is a is a Markov map on the spectrum of $\mathcal{R}: \{R\}_\pi$. The connectivity matrix of our protocol complex is given by
+\begin{equation} \label{eq1}
+\begin{split}
+\mathcal{M}^{\epsilon_\aleph} = \bigoplus_{\pi \leq \aleph, k\leq |\lambda|} T^{\epsilon^{k}}
+\end{split}
+\end{equation}
+where $\mathcal{M}$ is our connectivity matrix above and $\aleph$ refers to the infinite category. Anosov maps, like $T^{\epsilon}$ posses finite Markov partitions, are topologically mixing with positive topological entropy, $h_{top}(f) = log \alpha$, and possess a measure of maximal entropy $\mu$ which is the product of the two transverse measures $\mu^{+/-}$
+
+We can use the Perron-Frobenius eigenvalue method from the Parry measure to obtain the Markov transition matrices$\Pi(u)$ \footnote{ pg 176 \url{http://cosweb1.fau.edu/~jmirelesjames/ODE_course/katok.pdf}}. With the markov transition matrix $W(u)$ and initial value $W(0) = \mathcal{M}$ we can calculate Hausdorff dimension$\mathcal{H}(\mathcal{X})$. The transition matrices $\Pi(u)$ define ergodic Markov chains with corresponding invariant probability measures $\nu u$ on the symbolic space $Y = \{1 \dots \pi \}^{\mathbb{N}}$. We want$\Sigma_* \zeta(u)$ =  $\nu u$, which defines
+the measures $\zeta(u)$ uniquely the cylinder sets and we require all intervals that constitute a cylinder set have equal measure. By defining a formula connecting $f$ and $\mathcal{X}$ and using the fact that $f$ is a monotonic function of $u$ by item $A$ our result
+
+\begin{equation} \label{eq1}
+\begin{split}
+D(\mathcal{X}) = \frac{log \rho(u) - fu}{log |\lambda|}
+\end{split}
+\end{equation}
+Is the Hausdorff dimension$\mathcal{H}(\mathcal{X})$. 
+\subsection{Mixing time}
+We can use ordinary mixing time rules to determine probability/cost thresholds for the protocol. \footnote{http://ttic.uchicago.edu/~smale/papers/SmaleZhou0708.pdf \url{http://ttic.uchicago.edu/~smale/papers/SmaleZhou0708.pdf}} 
+
 
 \bibliographystyle{plain}
 \end{document}
